@@ -14,6 +14,10 @@
 pip install flyway
 ```
 
+## NOTICE
+
+If you are using MySQL and need to execute multiple SQL statements, make sure to add `client_flag=CLIENT.MULTI_STATEMENTS` in pymysql param. This is required to allow the execution of multiple SQL statements in a single query.
+
 ## 📖 Usage
 
 ### Basic Example
@@ -42,14 +46,17 @@ migrator.migrate()
 
 ```python
 import pymysql
+from pymysql.constants import CLIENT
 from flyway import Migrator, MigratorConfig, DbType
 
 # Create MySQL connection
+# Note: Add client_flag=CLIENT.MULTI_STATEMENTS if your migration files contain multiple SQL statements
 conn = pymysql.connect(
     host="localhost",
     user="root",
     password="password",
-    database="mydb"
+    database="mydb",
+    client_flag=CLIENT.MULTI_STATEMENTS
 )
 
 # Configure migrator
