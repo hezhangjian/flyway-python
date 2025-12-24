@@ -12,9 +12,13 @@ dependencies = [
 dev = [
     "mypy",
     "ruff",
+    "types-PyMySQL",
 ]
 test = [
+    "mysql-connector-python",
+    "pymysql",
     "pytest",
+    "testcontainers",
 ]
 
 [project.urls]
@@ -24,6 +28,10 @@ Documentation = "https://github.com/hezhangjian/flyway-python#readme"
 
 [tool.mypy]
 python_version = "3.11"
+
+[[tool.mypy.overrides]]
+module = "testcontainers.mysql"
+ignore_missing_imports = true
 
 [tool.ruff]
 line-length = 120

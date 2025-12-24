@@ -132,7 +132,7 @@ class MySQLDatabase(Database):
         cursor = self.conn.cursor()
         cursor.execute(
             "SELECT * FROM flyway_schema_history WHERE version = %s AND success = TRUE",
-            version,
+            (version,),
         )
         row = cursor.fetchone()
         cursor.close()
@@ -158,6 +158,7 @@ class MySQLDatabase(Database):
             return
         cursor = self.conn.cursor()
         cursor.execute("SELECT RELEASE_LOCK('flyway_lock')")
+        cursor.fetchone()
         cursor.close()
         self._lock_acquired = False
 
