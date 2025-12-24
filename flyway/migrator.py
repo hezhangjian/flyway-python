@@ -32,15 +32,16 @@ class Migrator:
         """
         self.conn = connection
         self.config = config
+        self.adapter: Database
         if config.db_type == DbType.SQLITE:
-            self.adapter: Database = SQLiteDatabase(connection)
+            self.adapter = SQLiteDatabase(connection)
         elif config.db_type == DbType.MYSQL:
-            self.adapter: Database = MySQLDatabase(connection)
+            self.adapter = MySQLDatabase(connection)
         else:
             raise ValueError(f"Unsupported database type: {config.db_type}")
         self.adapter.create_schema_history_table()
 
-    def create_database(db_type: DbType, connection: Any) -> Database:
+    def create_database(self, db_type: DbType, connection: Any) -> Database:
         """Create a database adapter based on database type."""
         if db_type == DbType.SQLITE:
             return SQLiteDatabase(connection)
