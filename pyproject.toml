@@ -19,7 +19,7 @@ Repository = "https://github.com/hezhangjian/flyway-python"
 Documentation = "https://github.com/hezhangjian/flyway-python#readme"
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.11"
 
 [tool.ruff]
 line-length = 120
