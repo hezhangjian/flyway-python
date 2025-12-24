@@ -7,7 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.0] - 2024-XX-XX
+## [0.2.0] - 2025-12-24
+
+### Added
+- MySQL flyway test suite with testcontainers integration
+- Comprehensive test coverage for MySQL database migrations
+
+### Changed
+- Minimum Python version requirement upgraded from 3.9 to 3.11
+
+### Dev
+- Added `ruff` linter to development dependencies
+- Added `mypy` type checking configuration
+- Added `testcontainers` for MySQL integration testing
+- Added `mysql-connector-python` and `pymysql` to test dependencies
+
+## [0.1.0] - 2025-12-20
 
 ### Added
 - Initial release of Flyway-Python, a database migration tool inspired by Flyway
